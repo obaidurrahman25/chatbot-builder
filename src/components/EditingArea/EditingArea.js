@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import './EditingArea.scss';
 import ReactFlow, { Handle, MiniMap, Controls, Background, applyNodeChanges, applyEdgeChanges, useNodesState, useEdgesState, addEdge, Panel } from 'reactflow';
 import 'reactflow/dist/style.css';
+import TextNode from '../CustomNodes/TextNode/TextNode';
 
 function EditingArea() {
 
@@ -9,20 +10,21 @@ function EditingArea() {
     {
       id: '1',
       type: 'textNode',
-      data: { label: 'Input Node', value: '', placeholder: 'Enter your text here' },
+      data: { label: 'Input Node', value: 'First node', placeholder: 'Enter your text here' },
       position: { x: 250, y: 25 },
     },
   
     {
       id: '2',
+      type: 'textNode',
       // you can also pass a React component as a label
-      data: { label: <div>Default Node</div> },
+      data: { label: 'Input Node', value: 'Default node', placeholder: 'Enter your text here' },
       position: { x: 100, y: 125 },
     },
     {
       id: '3',
-      type: 'output',
-      data: { label: 'Output Node' },
+      type: 'textNode',
+      data: {  label: 'Input Node', value: 'Output node', placeholder: 'Enter your text here'  },
       position: { x: 250, y: 250 },
     },
   ];
@@ -58,6 +60,8 @@ function EditingArea() {
     );
   } 
 
+  const nodeTypes = useMemo(() => ({ textNode: (props) => <TextNode {...props} updateNode={updateNode} /> }), []);
+
   return (
     <div className="editing-area-container">
       <ReactFlow 
@@ -65,7 +69,8 @@ function EditingArea() {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onConnect={onConnect}>
+        onConnect={onConnect}
+        nodeTypes={nodeTypes}>
           <MiniMap />
           <Controls />
           <Background />
