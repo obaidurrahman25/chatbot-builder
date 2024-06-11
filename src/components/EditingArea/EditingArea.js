@@ -3,8 +3,13 @@ import './EditingArea.scss';
 import ReactFlow, { Handle, MiniMap, Controls, Background, applyNodeChanges, applyEdgeChanges, useNodesState, useEdgesState, addEdge, Panel } from 'reactflow';
 import 'reactflow/dist/style.css';
 import TextNode from '../CustomNodes/TextNode/TextNode';
+import { v4 as uuidv4 } from 'uuid';
 
 function EditingArea() {
+
+  const generateUniqueId = () => {
+    return uuidv4();
+  };
 
   const initialNodes = [
     {
@@ -36,6 +41,7 @@ function EditingArea() {
 
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -58,7 +64,39 @@ function EditingArea() {
         node.id === id ? { ...node, data: { ...node.data, value: newValue } } : node
       )
     );
-  } 
+  }
+
+  const onDragOver = useCallback((event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+  }, []);
+  
+  const onDrop = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      const type = event.dataTransfer.getData('application/reactflow');
+
+      // check if the dropped element is valid
+      if (typeof type === 'undefined' || !type) {
+        return;
+      }
+
+      const position = reactFlowInstance.screenToFlowPosition({
+        x: event.clientX,
+        y: event.clientY,
+      });
+      const newNode = {
+        id: generateUniqueId(),
+        type,
+        position,
+        data: { label: `${type} node` },
+      };
+
+      setNodes((nds) => nds.concat(newNode));
+    },
+    [reactFlowInstance],
+  );
 
   const nodeTypes = useMemo(() => ({ textNode: (props) => <TextNode {...props} updateNode={updateNode} /> }), []);
 
@@ -70,7 +108,11 @@ function EditingArea() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        nodeTypes={nodeTypes}>
+        nodeTypes={nodeTypes}
+        onInit={setReactFlowInstance}
+        fitView
+        onDrop={onDrop}
+        onDragOver={onDragOver}>
           <MiniMap />
           <Controls />
           <Background />
