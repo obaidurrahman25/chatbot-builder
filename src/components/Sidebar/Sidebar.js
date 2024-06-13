@@ -12,7 +12,7 @@ function Sidebar() {
   const TextNodeTemplate = () => {
     return (
       <div className='textnode-template' onDragStart={(event) => onDragStart(event, 'textNode')} draggable>
-            {'Text node'}
+            {'Text message node'}
       </div>
     );
   }

@@ -1,4 +1,22 @@
 .edit-window-container {
+    .error-alert {
+        position: fixed;
+        width: auto;
+        padding: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        justify-content: center;
+        top: 12vh;         /* Positions the top edge 50% from the top of the viewport */
+        left: 50vw;        /* Positions the left edge 50% from the left of the viewport */
+        transform: translate(-50%, -50%);
+        font-size: 10px;
+        z-index: 100;
+        .css-1vooibu-MuiSvgIcon-root {
+            width: 15px;
+            height: 15px;
+        }
+    }
     .page-content {
         display: flex;
     }
