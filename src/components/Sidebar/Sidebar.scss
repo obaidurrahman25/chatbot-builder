@@ -2,4 +2,19 @@
     height: 92vh;
     width: 15vw;
     background-color: #F5E3E0;
+    display: flex;
+    justify-content: center;
+    .textnode-template {
+        border: 1.5px solid black;
+        border-radius: 4px;
+        height: 7vh;
+        width: 11vw;
+        background-color: white;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2vw;
+        cursor:pointer;
+    }
 }

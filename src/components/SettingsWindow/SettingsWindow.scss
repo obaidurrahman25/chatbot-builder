@@ -3,4 +3,34 @@
     width: 15vw;
     //background-color: #6E4555;
     background-color: #F5E3E0;
+    .tabs-container {
+        background-color: #6e455516;
+        height: 4vh;
+        .tabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 11px;
+            color: #6e4555;
+        }
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        padding: 10px;
+        .grid-item {
+            background-color: #8e44ad;
+            color: white;
+            border: 0px solid #ddd;
+            font-size: 1.2em;
+            
+        }
+        .grid-item.text-property {
+            grid-column: span 2;
+            background-color: #F5E3E0;
+        }
+    }
 }
