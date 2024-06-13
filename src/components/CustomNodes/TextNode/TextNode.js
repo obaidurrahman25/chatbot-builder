@@ -6,7 +6,7 @@ function TextNode (props) {
 
     const onChange = useCallback((evt) => {
         props.updateNode(props.id, evt.target.value);
-    }, []);
+    }, [props]);
 
     return (
         <div className='textnode-container' style={{ padding: 0, border: '1px solid #000000', borderRadius: 5, backgroundColor: 'white' }}>
