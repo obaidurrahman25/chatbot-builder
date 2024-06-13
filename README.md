@@ -1,6 +1,8 @@
 # chatbot-builder
 
-**Craft Your Own Chatbot: No Code Needed!** [Click here to check it out!]([https://github.com](https://666a5e551e00600008a58afd--build-your-own-chatbot.netlify.app/))
+## **Craft Your Own Chatbot: No Code Needed!** 
+
+**[Click here to check it out](https://666a5e551e00600008a58afd--build-your-own-chatbot.netlify.app/)**
 
 Imagine creating your very own chatbot effortlessly with just a few clicks. Our innovative application lets you design and customize your chatbot using a seamless drag-and-drop interface. No coding required!
 
