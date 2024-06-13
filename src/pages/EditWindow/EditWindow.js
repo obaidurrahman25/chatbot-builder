@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EditWindow.scss';
 import Header from './../../components/Header/Header';
 import Sidebar from './../../components/Sidebar/Sidebar';

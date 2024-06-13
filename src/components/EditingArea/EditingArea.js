@@ -1,6 +1,6 @@
 import React, { useCallback, useState, useMemo, useContext } from 'react';
 import './EditingArea.scss';
-import ReactFlow, { Handle, MiniMap, Controls, Background, applyNodeChanges, applyEdgeChanges, useNodesState, useEdgesState, addEdge, Panel } from 'reactflow';
+import ReactFlow, { MiniMap, Controls, Background, applyNodeChanges, applyEdgeChanges, addEdge } from 'reactflow';
 import 'reactflow/dist/style.css';
 import TextNode from '../CustomNodes/TextNode/TextNode';
 import { v4 as uuidv4 } from 'uuid';

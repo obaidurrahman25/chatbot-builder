@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import './Sidebar.scss';
-import TextNode from '../CustomNodes/TextNode/TextNode';
 
 function Sidebar() {
 

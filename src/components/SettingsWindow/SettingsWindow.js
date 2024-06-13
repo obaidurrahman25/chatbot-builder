@@ -1,11 +1,8 @@
-import React, { useCallback, useContext } from 'react';
+import React from 'react';
 import './SettingsWindow.scss';
 import TextField from '../../common/CommonComponents/TextField/TextField';
-import Context  from './../../Context';
 
 function SettingsWindow(props) {
-
-  const { contextData, setContextData } = useContext(Context);
 
   const handleOnChange = (event) => {
     props.updateNode(props.selectedNode.id, event.target.value);
